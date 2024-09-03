@@ -81,7 +81,7 @@ def create_account_external():
     
     lets_go_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/main/div[2]/a'))).click()
     
-    time.sleep(3)
+    time.sleep(5)
     
     driver.quit()
 
@@ -91,8 +91,13 @@ def main():
 
     processes = []
     for _ in range(num_processes):
-        # Change type of account
-        p = multiprocessing.Process(target=create_account_external)
+        rand = random.randint(1,2)
+        if rand == 1:
+            # Change type of account
+            p = multiprocessing.Process(target=create_account_external)
+        else:
+            # Change type of account
+            p = multiprocessing.Process(target=create_account_internal)
         processes.append(p)
         p.start()
 
