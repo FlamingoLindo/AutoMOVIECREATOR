@@ -17,6 +17,7 @@ from dotenv import load_dotenv
 import os
 import multiprocessing
 import string
+import pyautogui
 
 load_dotenv()
 
@@ -49,7 +50,7 @@ def make_course(wait, course_amount, driver):
         
         file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
         file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\movie.png')
-        print('imagem')
+
         name_input = wait.until(EC.element_to_be_clickable((By.NAME, 'name'))).send_keys('Auto course ', random.randint(1,999999999))
         
         description_input = wait.until(EC.element_to_be_clickable((By.NAME, 'description'))).send_keys('Auto course ', random.randint(1,999999999))
@@ -59,7 +60,8 @@ def make_course(wait, course_amount, driver):
         tag.submit()
         
         course_catg_dropdown = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="mainForm"]/div/label[2]/div/div'))).click()
-        course_catg_option = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="react-select-2-option-0"]'))).click()
+        time.sleep(1)
+        course_catg_option = wait.until(EC.element_to_be_clickable((By.XPATH, '//div[@id="react-select-2-listbox"]/div/div'))).click()
         
         course_time = wait.until(EC.element_to_be_clickable((By.NAME, 'hours'))).send_keys(random.randint(1,250))
         
@@ -97,6 +99,7 @@ def make_course(wait, course_amount, driver):
         
         close_modal = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button')))
         close_modal.click()
+        
         
         # Text
         time.sleep(1)
@@ -201,8 +204,8 @@ def make_course(wait, course_amount, driver):
         close_modal = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button')))
         close_modal.click()
         
-        # Code
-        """time.sleep(1)
+        """# Code
+        time.sleep(1)
         add_class = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="__next"]/main/div[2]/a/img')))
         add_class.click()
         time.sleep(1)
@@ -313,8 +316,28 @@ def make_course(wait, course_amount, driver):
         
         end_class_creation = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/header/button'))).click()
         
-        time.sleep(15)
+        time.sleep(10)
+        pyautogui.press('f5')
+        driver.execute_script("document.body.style.zoom = '0.4'")
+        time.sleep(1)
         
+        count = 1
+        view_button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'a[data-com="ButtonIcon"]'))).click()
+        
+        anal_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div[3]/a'))).click()
+        
+        for i in range(8):
+            approve_btn = wait.until(EC.element_to_be_clickable((By.XPATH, f'//button[contains(.,"Aprovar")]'))).click()
+        
+            accept_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div/button[2]'))).click()
+            
+            ok_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
+            
+            count += 1
+            
+            time.sleep(1)
+        
+        go_back = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[1]/div[2]/ul/li[2]/a'))).click()
         
 def create_course(email, password, course_amount):
     driver_path = './chromedriver.exe'
@@ -328,7 +351,7 @@ def create_course(email, password, course_amount):
     course_page(wait)
 
     make_course(wait, course_amount, driver)
-    
+
     driver.quit()
 
 def main():
@@ -352,6 +375,7 @@ def main():
 
     for process in processes:
         process.join()
+    print(u'\033[0;32mDONE!')
 
 if __name__ == "__main__":
     main()
