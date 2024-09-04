@@ -373,11 +373,64 @@ def make_course(wait, driver):
 
     time.sleep(5)
     
-
     count = 1
     view_button = wait.until(EC.element_to_be_clickable(
         (By.CSS_SELECTOR, 'a[data-com="ButtonIcon"]'))).click()
-
+    
+    # Test
+    test_btn = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="__next"]/main/div[2]/div[2]/div[1]/nav/a[3]'))).click()
+    
+    new_test_btn = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="__next"]/main/div[2]/section/div[2]/div/a/div/div'))).click()
+    
+    test_name = wait.until(EC.element_to_be_clickable(
+        (By.NAME, 'name'))).send_keys('Test')
+    
+    module_dropdown = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="__next"]/main/div[2]/div[1]/label/div/div'))).click()
+    
+    module_option= wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="react-select-13-option-0"]'))).click()
+    
+    test_try_time = wait.until(EC.element_to_be_clickable(
+        (By.NAME, 'tryQuantity'))).send_keys('5')
+    
+    choise_test_btn = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="__next"]/main/div[2]/div[4]/button[7]/div'))).click()
+    
+    choise_points = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="__next"]/main/div[2]/div[2]/div/input'))).send_keys('10')
+    
+    choise_test_title = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="__next"]/main/div[2]/div[2]/section/div/div/div/div[1]/label/div/input'))).send_keys('Test Question')
+    
+    add_option = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="__next"]/main/div[2]/div[2]/section/div/div/div/button')))
+    add_option.click()
+    add_option.click()
+    
+    choise_1 = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="__next"]/main/div[2]/div[2]/section/div/div/div/div[2]/ul/li[1]/input'))).send_keys('Right')
+    
+    choise_1 = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="__next"]/main/div[2]/div[2]/section/div/div/div/div[2]/ul/li[2]/input'))).send_keys('Wrong')
+    
+    is_right_test = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="__next"]/main/div[2]/div[2]/section/div/div/div/div[2]/ul/li[1]/div[2]/label[1]/div'))).click()
+    
+    test_done = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="__next"]/main/header/button'))).click()
+    
+    save_test = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div/button[2]'))).click()
+    
+    list_test = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
+    
+    general_btn = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="__next"]/main/div[2]/div[2]/div/nav/a[1]'))).click()
+    
     anal_btn = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '//*[@id="__next"]/main/div[2]/div[3]/a'))).click()
 
@@ -395,10 +448,58 @@ def make_course(wait, driver):
 
         time.sleep(1)
 
+    anal_test = wait.until(EC.element_to_be_clickable(
+            (By.XPATH, '//*[@id="__next"]/main/div[2]/nav/a[2]'))).click()
+    
+    approve_test_btn = wait.until(EC.element_to_be_clickable(
+            (By.XPATH, '//*[@id="__next"]/main/div[2]/ul/div/ul/li/div/div/div/button[1]'))).click()
+    
+    accpet_test_btn = wait.until(EC.element_to_be_clickable(
+            (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div/button[2]'))).click()
+    
+    ok_test_btn = wait.until(EC.element_to_be_clickable(
+            (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
+    
     go_back = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '//*[@id="__next"]/main/div[1]/div[2]/ul/li[2]/a'))).click()
+    
+    anal_course = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="__next"]/main/div[2]/div[2]/a[2]'))).click()
+    
+    approve_btn = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="__next"]/main/div[2]/div[3]/div[2]/div[11]/div/button[1]'))).click()
+    
+    accept_course_btn = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div[2]/button[2]'))).click()
+    
+    ok_course_btn = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
+    
+    go_back3 = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="__next"]/main/div[2]/div[2]/a[1]'))).click()
 
+    time.sleep(1)
 
+    edit_button = driver.find_element(By.XPATH, "//td[@data-com='TableCell']//div[@data-com='ButtonContainer']//button[1]").click()
+    
+    pay_on_dropdown = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="modal-root"]/div[2]/div/form/div/div[2]/div/label/div/div'))).click()  
+
+    pay_on_option = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="react-select-14-option-1"]'))).click()  
+    
+    price = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="modal-root"]/div[2]/div/form/div/div[2]/label/div/input'))).send_keys(random.randint(1,50000)) 
+    
+    save_course = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="modal-root"]/div[2]/div/form/div/button'))).click()
+    
+    save_course2 = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div/button[2]'))).click()
+    
+    ok_course = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
+    
 def create_course(email, password):
     driver_path = './chromedriver.exe'
     s = Service(driver_path)
@@ -411,6 +512,8 @@ def create_course(email, password):
     course_page(wait)
 
     make_course(wait, driver)
+
+    time.sleep(5)
 
     driver.quit()
 

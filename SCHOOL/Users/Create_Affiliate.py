@@ -33,20 +33,20 @@ def login(wait, email, password, driver):
     
     time.sleep(5)
 
-def professor_page(wait):
+def aff_page(wait):
     user_control_page = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[1]/div[2]/ul/li[4]'))).click()
     
-    professor_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div[2]/div/a[2]'))).click()
+    aff_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div[2]/div/a[3]'))).click()
     
-def make_professor(wait, prof_amount):
+def make_aff(wait, aff_amount):
     
-    for i in range(prof_amount):
+    for i in range(aff_amount):
         rand = random.randint(999,99999999999)
-        new_professor_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//div[@id="__next"]/main/div[2]/section/div[2]/div[2]/div/a'))).click()
+        new_aff_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/section/div[2]/div[2]/div[1]/a'))).click()
         
+        time.sleep(0.5)
         
-        
-        email_input = wait.until(EC.element_to_be_clickable((By.NAME, 'email'))).send_keys(f'professor{rand}@gmail.com')
+        email_input = wait.until(EC.element_to_be_clickable((By.NAME, 'email'))).send_keys(f'student{rand}@gmail.com')
         
         time.sleep(0.5)
         
@@ -54,7 +54,7 @@ def make_professor(wait, prof_amount):
         
         time.sleep(0.5)
         
-        name_input = wait.until(EC.element_to_be_clickable((By.NAME, 'username'))).send_keys(f'Professor {i}')
+        name_input = wait.until(EC.element_to_be_clickable((By.NAME, 'username'))).send_keys(f'Affiliate {i}')
         
         time.sleep(0.5)
         
@@ -62,19 +62,17 @@ def make_professor(wait, prof_amount):
         
         time.sleep(0.5)
         
-        password_conf = wait.until(EC.element_to_be_clickable((By.NAME, 'passwordConfirmation'))).send_keys('12345678')
+        password_conf = wait.until(EC.element_to_be_clickable((By.NAME, 'passwordConfirmation')))
+        password_conf.send_keys('12345678')
+        password_conf.submit()
         
         time.sleep(0.5)
         
-        add_professor = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/form/button'))).click()
-        
         close_modal = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
         
+        print(u'\033[1;32mUSER CREATED!')
         
-        
-        
- 
-def create_professor(email, password, prof_amount):
+def create_aff(email, password, aff_amount):
     driver_path = './chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)  
@@ -83,9 +81,9 @@ def create_professor(email, password, prof_amount):
     
     login(wait, email, password, driver)
 
-    professor_page(wait)
+    aff_page(wait)
     
-    make_professor(wait, prof_amount)
+    make_aff(wait, aff_amount)
     
     driver.quit()
 
@@ -93,7 +91,7 @@ def main():
     # Define o número de processos que você quer rodar em paralelo
     num_processes = int(get_user_input("How many users to simulate?"))
     
-    prof_amount = int(get_user_input("How many professors?"))
+    aff_amount = int(get_user_input("How many affiliates?"))
     
     credentials = []
     for _ in range(num_processes):
@@ -104,7 +102,7 @@ def main():
 
     processes = []
     for email, password in credentials:
-        p = multiprocessing.Process(target=create_professor, args=(email, password, prof_amount))
+        p = multiprocessing.Process(target=create_aff, args=(email, password, aff_amount))
         processes.append(p)
         p.start()
 
