@@ -95,6 +95,11 @@ def set_up_account(wait, driver):
     
     finish_card = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div[3]/button'))).click()
     
+    name = driver.find_element(By.NAME, 'name')
+    driver.execute_script(f"arguments[0].value = 'autocard';", name)
+    
+    time.sleep(0.5)
+    
     cvv = driver.find_element(By.NAME, 'cvv')
     driver.execute_script(f"arguments[0].value = '{CVV}';", cvv)
 
@@ -115,14 +120,9 @@ def set_up_account(wait, driver):
     
     time.sleep(0.5)
     
-    name = driver.find_element(By.NAME, 'name')
-    driver.execute_script(f"arguments[0].value = 'autocard';", name)
-    
-    time.sleep(0.5)
-    
     card_done = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div/button[2]'))).click()
     
-    time.sleep(3)
+    time.sleep(1)
     
     ok_card = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
     
