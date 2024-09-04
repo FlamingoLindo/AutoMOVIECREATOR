@@ -83,7 +83,6 @@ def main():
 
     processes = []
     for _ in range(num_processes):
-        # Change type of account
         p = multiprocessing.Process(target=create_account)
         processes.append(p)
         p.start()
