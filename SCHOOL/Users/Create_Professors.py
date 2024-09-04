@@ -44,8 +44,6 @@ def make_professor(wait, prof_amount):
         rand = random.randint(999,99999999999)
         new_professor_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//div[@id="__next"]/main/div[2]/section/div[2]/div[2]/div/a'))).click()
         
-        
-        
         email_input = wait.until(EC.element_to_be_clickable((By.NAME, 'email'))).send_keys(f'professor{rand}@gmail.com')
         
         time.sleep(0.5)
@@ -70,10 +68,6 @@ def make_professor(wait, prof_amount):
         
         close_modal = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
         
-        
-        
-        
- 
 def create_professor(email, password, prof_amount):
     driver_path = './chromedriver.exe'
     s = Service(driver_path)
