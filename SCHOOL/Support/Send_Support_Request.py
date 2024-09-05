@@ -74,7 +74,7 @@ def make_support(wait, support_amount, driver):
         
         
         
-def create_aff(email, password, support_amount):
+def send_support(email, password, support_amount):
     driver_path = './chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)  
@@ -104,7 +104,7 @@ def main():
 
     processes = []
     for email, password in credentials:
-        p = multiprocessing.Process(target=create_aff, args=(email, password, support_amount))
+        p = multiprocessing.Process(target=send_support, args=(email, password, support_amount))
         processes.append(p)
         p.start()
 

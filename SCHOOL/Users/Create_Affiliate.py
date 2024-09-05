@@ -46,7 +46,7 @@ def make_aff(wait, aff_amount):
         
         time.sleep(0.5)
         
-        email_input = wait.until(EC.element_to_be_clickable((By.NAME, 'email'))).send_keys(f'student{rand}@gmail.com')
+        email_input = wait.until(EC.element_to_be_clickable((By.NAME, 'email'))).send_keys(f'affiliate{rand}@gmail.com')
         
         time.sleep(0.5)
         
