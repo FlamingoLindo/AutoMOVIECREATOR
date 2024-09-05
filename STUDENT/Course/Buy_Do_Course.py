@@ -13,6 +13,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.webdriver.common.action_chains import ActionChains
 import time
 from dotenv import load_dotenv
 import os
@@ -87,18 +88,35 @@ def favorite_course(wait):
     click_course = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="0"]/div/div'))).click()
     fav = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="0"]/div/div/div[2]/div[1]/div[1]'))).click()
 
-def do_course(wait):
-    click_course = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="0"]/div/div'))).click()
+def send_comment(wait, driver):
+    
+    add_comment_btn = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="main-wrapper"]/section/div[1]/div[3]/div')))
+    
+    ActionChains(driver).move_to_element(add_comment_btn).perform()
+    
+    add_comment_btn.click()
+    
+    text_input = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="add-comment"]/section/textarea'))).send_keys('Comment')
+    
+    publish_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="add-comment"]/section/button'))).click()
+
+
+def do_course(wait, driver):
+    click_course = wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/main/div/div[2]/div/div/div[1]/div/div/div/div/div/div/div'))).click()
     open_course = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="0"]/div/div/div[2]/div[1]/button/div'))).click()
     
-    time.sleep(2)
-    
+    time.sleep(1)
+
     # Video
+    send_comment(wait, driver)
+    
     do_class = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/aside/div[2]/div[2]/button'))).click()
     
     get_points = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
     
     # Text
+    send_comment(wait, driver)
+    
     do_class = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/aside/div[2]/div[2]/button'))).click()
     
     close_achv = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
@@ -108,6 +126,8 @@ def do_course(wait):
     get_points = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
     
     # Image
+    send_comment(wait, driver)
+    
     do_class = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/aside/div[2]/div[2]/button'))).click()
     
     time.sleep(0.5)
@@ -115,6 +135,8 @@ def do_course(wait):
     get_points = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
     
     # Audio
+    send_comment(wait, driver)
+    
     do_class = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/aside/div[2]/div[2]/button'))).click()
     
     close_achv = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
@@ -124,6 +146,8 @@ def do_course(wait):
     get_points = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
     
     # File
+    send_comment(wait, driver)
+    
     do_class = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/aside/div[2]/div[2]/button'))).click()
     
     time.sleep(0.5)
@@ -131,7 +155,11 @@ def do_course(wait):
     get_points = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
     
     # Choice
-    click_right = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="main-wrapper"]/div[2]/div/div[2]/div[1]'))).click()
+    send_comment(wait, driver)
+    
+    click_right = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="main-wrapper"]/div[2]/div/div[2]/div[1]')))
+    ActionChains(driver).move_to_element(click_right).perform()
+    click_right.click()
     
     time.sleep(1)
     
@@ -146,6 +174,8 @@ def do_course(wait):
     get_points = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
     
     # Dissertative
+    send_comment(wait, driver)
+    
     text_input = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="main-wrapper"]/div[2]/div/div[2]/textarea'))).send_keys('Auto')
     
     send = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="main-wrapper"]/div[2]/div/div[2]/button'))).click()
@@ -169,6 +199,8 @@ def do_course(wait):
     time.sleep(0.5)
     
     # Essay
+    send_comment(wait, driver)
+    
     text_input = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="main-wrapper"]/div[2]/div/div[2]/textarea'))).send_keys('Auto')
     
     time.sleep(0.5)
@@ -191,8 +223,11 @@ def do_course(wait):
     
     get_points = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
     
-    time.sleep(5)
+    time.sleep(1.5)
 
+def do_test(wait):
+    test_page_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div[3]/div[1]/div/a[1]/button'))).click()
+    
 def course(email, password):
     driver_path = './chromedriver.exe'
     s = Service(driver_path)
@@ -206,7 +241,7 @@ def course(email, password):
     
     favorite_course(wait)
 
-    do_course(wait)
+    do_course(wait, driver)
     
     time.sleep(3)
     

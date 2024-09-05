@@ -123,7 +123,7 @@ def internal(wait, driver):
     
     add_class = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/section/div[2]/div/a'))).click()
     
-    coupon_name = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/form/div[1]/div[1]/label/div/input'))).send_keys('Automatic Cupon ', random.randint(1,99999999))
+    coupon_name = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/form/div[1]/div[1]/label/div/input'))).send_keys('Automatic Class ', random.randint(1,99999999))
     
     class_name = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/form/div[1]/div/label/div/input'))).send_keys('Auto Class ', random.randint(1,9999999))
     
