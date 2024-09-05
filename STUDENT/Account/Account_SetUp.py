@@ -28,7 +28,7 @@ CVV = '827'
 
 def login(wait, email, password, driver):
     global found
-    driver.execute_script("document.body.style.zoom = '0.4'")
+    
     time.sleep(1)
     
     email_input = wait.until(EC.element_to_be_clickable((By.NAME, 'email'))).send_keys(email)
@@ -65,6 +65,8 @@ def login(wait, email, password, driver):
     
     
 def set_up_account(wait, driver):
+    time.sleep(1)
+
     profile_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/div[1]/div[1]/div[2]')))
     profile_btn.click()   
     
@@ -73,7 +75,7 @@ def set_up_account(wait, driver):
     time.sleep(1)
     
     file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
-    file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\movie.png')
+    file_input.send_keys(r'V:\..DevApp\AutoMOVIECREATOR\movie.png')
     
     """adresses_page = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/nav/a[4]'))).click()
     
