@@ -48,50 +48,20 @@ def course_page(wait):
         (By.XPATH, '//*[@id="__next"]/main/div[2]/div[2]/a[3]'))).click()
 
     
-def new_pack(wait, driver, pack_amount):
-    count = 3
-    for i in range(pack_amount):
-        new_pack_btn = wait.until(EC.element_to_be_clickable(
-            (By.XPATH, '//*[@id="__next"]/main/div[2]/div[4]/div[2]/a'))).click()
-        
-        time.sleep(1)
-        
-        file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
-        file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\movie.png')
-        
-        name_input = wait.until(EC.element_to_be_clickable(
-            (By.NAME, 'name'))).send_keys(f'Pack {i}')
-        
-        description_input = wait.until(EC.element_to_be_clickable(
-            (By.NAME, 'description'))).send_keys(f'Description {i}')
-        
-        add_course = wait.until(EC.element_to_be_clickable(
-            (By.XPATH, '//*[@id="__next"]/main/div[2]/div[3]/div[1]/div[2]/div[2]/label/label'))).click()
-        
-        single_payment_option = wait.until(EC.element_to_be_clickable(
-            (By.XPATH, '//*[@id="__next"]/main/div[2]/div[4]/div[1]/label/div'))).click()
-        
-        price_input = wait.until(EC.element_to_be_clickable(
-            (By.NAME, 'paymentPrice'))).send_keys(random.randint(1,50000))
-        
-        acces_dropdown = wait.until(EC.element_to_be_clickable(
-            (By.XPATH, '//*[@id="__next"]/main/div[2]/label/div/label/div/div'))).click()
-        
-        acces_option = wait.until(EC.element_to_be_clickable(
-            (By.XPATH, f'//*[@id="react-select-{count}-option-0"]'))).click()
-        
-        add_pack = wait.until(EC.element_to_be_clickable(
-            (By.XPATH, '//*[@id="__next"]/main/div[2]/footer/button'))).click()
-        
-        create_pack = wait.until(EC.element_to_be_clickable(
-            (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div/button[2]'))).click()
-        
-        go_back = wait.until(EC.element_to_be_clickable(
-            (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
-        
-        count += 2
+def delete_all_packs(wait):
+    try:
+        while True:
+            three_dots = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div[4]/div[2]/div[1]/div[1]/div[2]/button'))).click()
 
-def create_course_pack(email, password, pack_amount):
+            delte_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div[4]/div[2]/div[1]/div[1]/div[2]/div/ul/button'))).click()
+            
+            confirm = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div/button[2]'))).click()
+            
+            close_modal = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
+    except:
+        print('All pack have been deleted!')
+        
+def delete(email, password):
     driver_path = './chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)
@@ -102,7 +72,7 @@ def create_course_pack(email, password, pack_amount):
 
     course_page(wait)
 
-    new_pack(wait, driver, pack_amount)
+    delete_all_packs(wait)
 
     time.sleep(5)
 
@@ -112,9 +82,7 @@ def create_course_pack(email, password, pack_amount):
 def main():
     # Define o número de processos que você quer rodar em paralelo
     num_processes = int(get_user_input("How many users to simulate?"))
-
-    pack_amount = int(get_user_input('How many course packs?'))
-
+    
     credentials = []
     for _ in range(num_processes):
         # Capture email and password
@@ -125,7 +93,7 @@ def main():
     processes = []
     for email, password in credentials:
         p = multiprocessing.Process(
-            target=create_course_pack, args=(email, password, pack_amount))
+            target=delete, args=(email, password))
         processes.append(p)
         p.start()
 
