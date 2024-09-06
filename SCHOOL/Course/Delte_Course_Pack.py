@@ -59,7 +59,7 @@ def delete_all_packs(wait):
             
             close_modal = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
     except:
-        print('All pack have been deleted!')
+        print('All packs have been deleted!')
         
 def delete(email, password):
     driver_path = './chromedriver.exe'

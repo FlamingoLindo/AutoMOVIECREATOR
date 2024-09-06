@@ -42,21 +42,24 @@ def login(wait, email, password, driver):
 # For some reason it only goes untill there are 3 left 
 def open_update(wait):
     count = 1
-    while True:
-        arrow_btn = wait.until(EC.element_to_be_clickable((By.XPATH, f'//*[@id="__next"]/main/div/div/div/section[2]/ul/li[{count}]/a'))).click()
-    
-        text_input = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/form/div/textarea'))).send_keys(string.ascii_letters, string.ascii_lowercase, string.ascii_uppercase, string.digits, string.hexdigits, string.octdigits, string.punctuation)
+    try:
+        while True:
+            arrow_btn = wait.until(EC.element_to_be_clickable((By.XPATH, f'//*[@id="__next"]/main/div/div/div/section[2]/ul/li[{count}]/a'))).click()
         
-        publish_comment = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/form/button'))).click()
-        
-        go_back = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="VolTAR"]'))).click()
-        
-        count += 1
-        
-        time.sleep(1)
-        
-        if count > 3:
-            count = 1
+            text_input = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/form/div/textarea'))).send_keys(string.ascii_letters, string.ascii_lowercase, string.ascii_uppercase, string.digits, string.hexdigits, string.octdigits, string.punctuation)
+            
+            publish_comment = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/form/button'))).click()
+            
+            go_back = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="VolTAR"]'))).click()
+            
+            count += 1
+            
+            time.sleep(1)
+            
+            if count > 3:
+                count = 1
+    except:
+        print('No more comments to be added!')
         
         
 def activitie(email, password):

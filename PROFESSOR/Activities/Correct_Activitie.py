@@ -41,27 +41,30 @@ def login(wait, email, password, driver):
 
 def correct_activitie(wait):
     count = 1
-    while True:
-        arrow_btn = wait.until(EC.element_to_be_clickable((By.XPATH, f'//*[@id="__next"]/main/div/div/div/section[1]/article[1]/article/ul/li[{count}]/a'))).click()
-        
-        answer_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/section[2]/footer/button'))).click()    
-        
-        text_input = wait.until(EC.element_to_be_clickable((By.NAME, 'description'))).send_keys(string.ascii_letters, string.ascii_lowercase, string.ascii_uppercase, string.digits, string.hexdigits, string.octdigits, string.punctuation)
+    try:
+        while True:
+            arrow_btn = wait.until(EC.element_to_be_clickable((By.XPATH, f'//*[@id="__next"]/main/div/div/div/section[1]/article[1]/article/ul/li[{count}]/a'))).click()
+            
+            answer_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/section[2]/footer/button'))).click()    
+            
+            text_input = wait.until(EC.element_to_be_clickable((By.NAME, 'description'))).send_keys(string.ascii_letters, string.ascii_lowercase, string.ascii_uppercase, string.digits, string.hexdigits, string.octdigits, string.punctuation)
 
-        send_correction = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/section[2]/footer/button'))).click()
-        
-        save = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div/button[2]'))).click()
-        
-        go_back = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
+            send_correction = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/section[2]/footer/button'))).click()
+            
+            save = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div/button[2]'))).click()
+            
+            go_back = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
 
-        go_back2 = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="VolTAR"]'))).click()
-        
-        count += 1
-        
-        if count > 3:
-            count = 1
+            go_back2 = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="VolTAR"]'))).click()
+            
+            count += 1
+            
+            if count > 3:
+                count = 1
 
-        time.sleep(3)
+            time.sleep(3)
+    except:
+        print('No more activites to correct!')
     
 def activitie(email, password):
     driver_path = './chromedriver.exe'

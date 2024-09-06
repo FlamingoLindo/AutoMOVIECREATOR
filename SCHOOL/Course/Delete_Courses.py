@@ -47,17 +47,19 @@ def course_page(wait):
 
 def delete_course(wait, driver):
     time.sleep(1)
-    
-    while True:
-        delete_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//td[@data-com="TableCell"]//div[@data-com="ButtonContainer"]//button[2]'))).click()
-            
-        delete = wait.until(EC.element_to_be_clickable(
-            (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div[2]/button[2]'))).click()
-            
-        ok = wait.until(EC.element_to_be_clickable(
-            (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
-            
-        time.sleep(1)
+    try:
+        while True:
+            delete_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//td[@data-com="TableCell"]//div[@data-com="ButtonContainer"]//button[2]'))).click()
+                
+            delete = wait.until(EC.element_to_be_clickable(
+                (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div[2]/button[2]'))).click()
+                
+            ok = wait.until(EC.element_to_be_clickable(
+                (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
+                
+            time.sleep(1)
+    except:
+        print('All courses have been delted!')
 
     
     
