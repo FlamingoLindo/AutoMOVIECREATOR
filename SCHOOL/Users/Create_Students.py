@@ -44,30 +44,30 @@ def make_student(wait, stu_amount):
         rand = random.randint(999,99999999999)
         new_student_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/section/div[2]/div[2]/div[1]/a'))).click()
         
-        time.sleep(0.5)
+        time.sleep(0.2)
         
         email_input = wait.until(EC.element_to_be_clickable((By.NAME, 'email'))).send_keys(f'student{rand}@gmail.com')
         
-        time.sleep(0.5)
+        time.sleep(0.2)
         
         cpf_input = wait.until(EC.element_to_be_clickable((By.NAME, 'cpf'))).send_keys(gera_e_valida_cpf())
         
-        time.sleep(0.5)
+        time.sleep(0.2)
         
         name_input = wait.until(EC.element_to_be_clickable((By.NAME, 'username'))).send_keys(f'Student {i}')
         
-        time.sleep(0.5)
+        time.sleep(0.2)
         
         password = wait.until(EC.element_to_be_clickable((By.NAME, 'password'))).send_keys('12345678')
         
-        time.sleep(0.5)
+        time.sleep(0.2)
         
         password_conf = wait.until(EC.element_to_be_clickable((By.NAME, 'passwordConfirmation')))
         password_conf.send_keys('12345678')
         password_conf.submit()
-        
-        time.sleep(0.5)
-        
+            
+        time.sleep(0.5)   
+            
         close_modal = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
         
         print(u'\033[1;32mUSER CREATED!')

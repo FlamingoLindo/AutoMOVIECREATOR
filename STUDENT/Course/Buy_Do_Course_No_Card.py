@@ -23,9 +23,9 @@ load_dotenv()
 
 found = False
 
-CARD_NUM = '5543451621296316'
-EXP_DATE = '0126'
-CVV = '827'
+CARD_NUM = '5345943824671592'
+EXP_DATE = '0826'
+CVV = '189'
 
 def login(wait, email, password, driver):
     global found
@@ -74,19 +74,35 @@ def buy_course(wait):
     
     time.sleep(2)
     
-    buy_now_btn =  wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/form/section/div[3]/button'))).click()
+    name_input =  wait.until(EC.element_to_be_clickable((By.NAME, 'name'))).send_keys(create_random_name())
+    time.sleep(0.2)
+    car_num_input =  wait.until(EC.element_to_be_clickable((By.NAME, 'numberCard'))).send_keys(CARD_NUM)
+    time.sleep(0.2)
+    car_exp_input =  wait.until(EC.element_to_be_clickable((By.NAME, 'expiration'))).send_keys(EXP_DATE)
+    time.sleep(0.2)
+    car_cvv_input =  wait.until(EC.element_to_be_clickable((By.NAME, 'cvv'))).send_keys(CVV)
+    time.sleep(0.2)
+    cpf_input = wait.until(EC.element_to_be_clickable((By.NAME, 'cpf'))).send_keys(gera_e_valida_cpf())
+    time.sleep(0.2)
+    cep_input = wait.until(EC.element_to_be_clickable((By.NAME, 'zipcode'))).send_keys('01001-000')
+    
+    time.sleep(1.5)
+    
+    number_input = wait.until(EC.element_to_be_clickable((By.NAME, 'number')))
+    number_input.send_keys('1')
+    number_input.submit()
     
     buy =  wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div/button'))).click()
     
     time.sleep(5)
     
-    my_courses = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/div[1]/div[1]/ul/li[3]'))).click()
+    home_page = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/section/div/a'))).click()
     
     time.sleep(3)
     
 def favorite_course(wait):
-    click_course = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div/div/div/div/div[1]/div'))).click()
-    fav = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div/div/div/div/div[1]/div/div[2]/div[1]/div/div[1]/div[2]'))).click()
+    click_course = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="0"]/div/div'))).click()
+    fav = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="0"]/div/div/div[2]/div[1]/div[1]'))).click()
 
 def send_comment(wait, driver):
     
@@ -102,8 +118,8 @@ def send_comment(wait, driver):
 
 
 def do_course(wait, driver):
-    click_course = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div/div/div/div/div[1]/div'))).click()
-    open_course = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div/div/div/div/div[1]/div/div[2]/div[1]/div/div[1]/div[1]'))).click()
+    click_course = wait.until(EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/main/div/div[2]/div/div/div[1]/div/div/div/div/div/div/div'))).click()
+    open_course = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="0"]/div/div/div[2]/div[1]/button/div'))).click()
     
     time.sleep(1)
 

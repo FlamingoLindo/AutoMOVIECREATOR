@@ -23,9 +23,9 @@ load_dotenv()
 
 found = False
 
-CARD_NUM = '5543451621296316'
-EXP_DATE = '0126'
-CVV = '827'
+CARD_NUM = '5345943824671592'
+EXP_DATE = '0826'
+CVV = '189'
 
 def login(wait, email, password, driver):
     global found
@@ -73,16 +73,18 @@ def buy_course(wait):
     buy_course_btn =  wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="0"]/div/div/div[2]/div[1]/a'))).click()
     
     time.sleep(2)
+  
+    pix = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/form/section/div[2]/div/div[2]/div/label'))).click()
+  
+    buy =  wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/form/section/div[3]/button'))).click()
     
-    buy_now_btn =  wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/form/section/div[3]/button'))).click()
+    buy_now =  wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div/button'))).click()
     
-    buy =  wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div/button'))).click()
-    
-    time.sleep(5)
+    time.sleep(3)
     
     my_courses = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/div[1]/div[1]/ul/li[3]'))).click()
     
-    time.sleep(3)
+    time.sleep(1)
     
 def favorite_course(wait):
     click_course = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div/div/div/div/div[1]/div'))).click()
@@ -105,7 +107,7 @@ def do_course(wait, driver):
     click_course = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div/div/div/div/div[1]/div'))).click()
     open_course = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div/div/div/div/div[1]/div/div[2]/div[1]/div/div[1]/div[1]'))).click()
     
-    time.sleep(1)
+    time.sleep(3)
 
     # Video
     send_comment(wait, driver)
