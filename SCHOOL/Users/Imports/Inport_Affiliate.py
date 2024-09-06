@@ -33,9 +33,11 @@ def login(wait, email, password, driver):
 def affiliate_page(wait):
     user_control_page = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[1]/div[2]/ul/li[4]'))).click()
     
+    time.sleep(1)
+    
     affiliate_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div[2]/div/a[3]'))).click()
     
-    time.sleep(1)
+    time.sleep(2)
     
 def import_affilaite(wait, driver):
     file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
