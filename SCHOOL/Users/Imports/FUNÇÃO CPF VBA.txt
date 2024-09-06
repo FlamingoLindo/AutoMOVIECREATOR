@@ -1,0 +1,59 @@
+Function GeraEValidaCPF() As String
+    Dim cpf(0 To 10) As Integer
+    Dim i As Integer
+    Dim soma1 As Integer, soma2 As Integer
+    Dim digito1 As Integer, digito2 As Integer
+    Dim cpfFormatado As String
+    
+    Do
+        ' Gera os primeiros 9 dígitos do CPF
+        For i = 0 To 8
+            cpf(i) = Int(Rnd() * 10)
+        Next i
+        
+        ' Calcula o primeiro dígito verificador
+        soma1 = 0
+        For i = 0 To 8
+            soma1 = soma1 + cpf(i) * (10 - i)
+        Next i
+        digito1 = (soma1 * 10 Mod 11)
+        If digito1 = 10 Then digito1 = 0
+        cpf(9) = digito1
+        
+        ' Calcula o segundo dígito verificador
+        soma2 = 0
+        For i = 0 To 9
+            soma2 = soma2 + cpf(i) * (11 - i)
+        Next i
+        digito2 = (soma2 * 10 Mod 11)
+        If digito2 = 10 Then digito2 = 0
+        cpf(10) = digito2
+        
+        ' Valida o CPF gerado
+        soma1 = 0
+        For i = 0 To 8
+            soma1 = soma1 + cpf(i) * (10 - i)
+        Next i
+        digito1 = (soma1 * 10 Mod 11)
+        If digito1 = 10 Then digito1 = 0
+        If cpf(9) <> digito1 Then GoTo ContinueLoop
+        
+        soma2 = 0
+        For i = 0 To 9
+            soma2 = soma2 + cpf(i) * (11 - i)
+        Next i
+        digito2 = (soma2 * 10 Mod 11)
+        If digito2 = 10 Then digito2 = 0
+        If cpf(10) <> digito2 Then GoTo ContinueLoop
+        
+        ' Formata o CPF
+        cpfFormatado = Format(cpf(0), "0") & Format(cpf(1), "0") & Format(cpf(2), "0") & "." & _
+                        Format(cpf(3), "0") & Format(cpf(4), "0") & Format(cpf(5), "0") & "." & _
+                        Format(cpf(6), "0") & Format(cpf(7), "0") & Format(cpf(8), "0") & "-" & _
+                        Format(cpf(9), "0") & Format(cpf(10), "0")
+        GeraEValidaCPF = cpfFormatado
+        Exit Function
+        
+    ContinueLoop:
+    Loop
+End Function
