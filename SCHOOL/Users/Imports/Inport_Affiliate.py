@@ -43,7 +43,7 @@ def import_affilaite(wait, driver):
     file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
     file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\SCHOOL\Users\Imports\imports.xlsm')
     
-    time.sleep(20)
+    time.sleep(5000)
     
         
 def import_(email, password):

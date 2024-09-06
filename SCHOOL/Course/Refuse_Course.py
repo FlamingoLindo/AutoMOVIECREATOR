@@ -44,29 +44,24 @@ def course_page(wait):
     course_page = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '//*[@id="__next"]/main/div[1]/div[2]/ul/li[2]'))).click()
 
+    anal_page = wait.until(EC.element_to_be_clickable(
+        (By.XPATH, '//*[@id="__next"]/main/div[2]/div[2]/a[2]'))).click()
 
-def delete_course(wait, driver):
-    time.sleep(1)
+    
+def refuse_courses(wait):
     try:
         while True:
-            delete_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//td[@data-com="TableCell"]//div[@data-com="ButtonContainer"]//button[2]'))).click()
-                
-            delete = wait.until(EC.element_to_be_clickable(
-                (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div[2]/button[2]'))).click()
-                
-            ok = wait.until(EC.element_to_be_clickable(
-                (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
-            
-            print(u'\033[9m\033[0;36mCourse deleted')
-                
-            time.sleep(1)
-    except:
-        print('\033[0;32mAll courses have been deleted!')
+            refuse_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div[3]/div[2]/div[11]/div/button[2]'))).click()
+        
+            confirm = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div[2]/button[2]'))).click()
 
-    
-    
-    
-def create_course(email, password):
+            close_modal = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
+            
+            print('Course refused!')
+    except:
+        print('All courses have been refused!')
+        
+def refuse(email, password):
     driver_path = './chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)
@@ -77,8 +72,8 @@ def create_course(email, password):
 
     course_page(wait)
 
-    delete_course(wait, driver)
-
+    refuse_courses(wait)
+    
     time.sleep(5)
 
     driver.quit()
@@ -87,7 +82,7 @@ def create_course(email, password):
 def main():
     # Define o número de processos que você quer rodar em paralelo
     num_processes = int(get_user_input("How many users to simulate?"))
-
+    
     credentials = []
     for _ in range(num_processes):
         # Capture email and password
@@ -98,7 +93,7 @@ def main():
     processes = []
     for email, password in credentials:
         p = multiprocessing.Process(
-            target=create_course, args=(email, password))
+            target=refuse, args=(email, password))
         processes.append(p)
         p.start()
 

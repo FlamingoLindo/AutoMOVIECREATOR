@@ -44,29 +44,17 @@ def course_page(wait):
     course_page = wait.until(EC.element_to_be_clickable(
         (By.XPATH, '//*[@id="__next"]/main/div[1]/div[2]/ul/li[2]'))).click()
 
+def open_course(wait):
+    view_button = wait.until(EC.element_to_be_clickable(
+            (By.CSS_SELECTOR, 'a[data-com="ButtonIcon"]'))).click()
+    
+def duplicate_course(wait):
+    while True:
+        dup_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div[1]/div[2]/button'))).click()
+        
+        close_modal = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
 
-def delete_course(wait, driver):
-    time.sleep(1)
-    try:
-        while True:
-            delete_button = wait.until(EC.element_to_be_clickable((By.XPATH, '//td[@data-com="TableCell"]//div[@data-com="ButtonContainer"]//button[2]'))).click()
-                
-            delete = wait.until(EC.element_to_be_clickable(
-                (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/div[2]/button[2]'))).click()
-                
-            ok = wait.until(EC.element_to_be_clickable(
-                (By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
-            
-            print(u'\033[9m\033[0;36mCourse deleted')
-                
-            time.sleep(1)
-    except:
-        print('\033[0;32mAll courses have been deleted!')
-
-    
-    
-    
-def create_course(email, password):
+def duplicate(email, password):
     driver_path = './chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)
@@ -76,9 +64,10 @@ def create_course(email, password):
     login(wait, email, password, driver)
 
     course_page(wait)
-
-    delete_course(wait, driver)
-
+    
+    open_course(wait)
+    
+    duplicate_course(wait)
     time.sleep(5)
 
     driver.quit()
@@ -98,7 +87,7 @@ def main():
     processes = []
     for email, password in credentials:
         p = multiprocessing.Process(
-            target=create_course, args=(email, password))
+            target=duplicate, args=(email, password))
         processes.append(p)
         p.start()
 
