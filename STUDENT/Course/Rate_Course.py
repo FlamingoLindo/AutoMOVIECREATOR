@@ -78,6 +78,8 @@ def rate_course(wait):
             
             five_star = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/form/div/div/button[5]'))).click()
             
+            text_input = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/form/label/textarea'))).send_keys('Muito bom!')
+            
             submit = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/form/button'))).click()
             
             star_count += 1
