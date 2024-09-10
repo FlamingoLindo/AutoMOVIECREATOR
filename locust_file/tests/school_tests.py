@@ -171,4 +171,4 @@ class SchoolUser(HttpUser):
     @task
     def get_transactions(self):
         headers = self.get_headers()
-        response = self.client.get('transactions?filters[user}=147', headers=headers, name='Get bought items')
+        response = self.client.get('transactions?filters[user}=147', headers=headers, name='Get transactions')
