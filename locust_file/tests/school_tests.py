@@ -446,13 +446,14 @@ class SchoolUser(HttpUser):
                 "user": "7"
             }
         }
+        headers["Content-Type"] = "application/json"
         headers = self.get_headers()
-        response = self.client.post('corrections', json = body, name = 'Corrigir Questões - Criar')
+        response = self.client.post('corrections', headers=headers, json = body, name = 'Corrigir Questões - Criar')
         
     @task 
     def list_exam_corrections(self):
         headers = self.get_headers()
-        response = self.client.get('corrections', name = 'Corrigir Questões Curso - Listar')
+        response = self.client.get('corrections', headers=headers, name = 'Corrigir Questões Curso - Listar')
         
     @task 
     def create_class(self):
@@ -461,13 +462,14 @@ class SchoolUser(HttpUser):
             "name": f"{create_random_name()}",
             "courses": ["20626"]
         }
+        headers["Content-Type"] = "application/json"
         headers = self.get_headers()
-        response = self.client.post('createClass', json = body, name = 'Turmas - Criar')
+        response = self.client.post('createClass', headers=headers, json = body, name = 'Turmas - Criar')
         
     @task
     def list_classes(self):
         headers = self.get_headers()
-        response = self.client.get('classes?filters[userCompany]=147&populate=*', name= 'Turmas - Listar')
+        response = self.client.get('classes?filters[userCompany]=147&populate=*', headers=headers, name= 'Turmas - Listar')
     
     @task 
     def update_class(self):
@@ -480,8 +482,9 @@ class SchoolUser(HttpUser):
                         "userStudent": ["8"]	
                     }
         }
+        headers["Content-Type"] = "application/json"
         headers = self.get_headers()
-        response = self.client.put('classes/1', json = body, name = 'Turmas - Alterar')
+        response = self.client.put('classes/1', json = body, headers=headers, name = 'Turmas - Alterar')
         
     @task
     def create_forum(self):
@@ -492,14 +495,15 @@ class SchoolUser(HttpUser):
                 "user": 73
             }
         }
+        headers["Content-Type"] = "application/json"
         headers = self.get_headers()
-        response = self.client.post('forums', json = body, name='Forum - Criar')
+        response = self.client.post('forums', json = body, headers=headers, name='Forum - Criar')
         
     @task
     # this one does not work, so yeah dont worry if you see an error
     def load_forum(self):
         headers = self.get_headers()
-        response = self.client.get('forums?populate=forum_answers.user&populate=lesson&populate=user&filters[lesson][course][id]=20626', name='Forum - Carregar')
+        response = self.client.get('forums?populate=forum_answers.user&populate=lesson&populate=user&filters[lesson][course][id]=20626', headers=headers, name='Forum - Carregar')
     
     @task
     def create_certificate(self):
@@ -510,13 +514,14 @@ class SchoolUser(HttpUser):
                         "code": "1234##"
                     }
         }
+        headers["Content-Type"] = "application/json"
         headers = self.get_headers()
-        response = self.client.post('certificates', json = body, name= 'Certificado - Criar')
+        response = self.client.post('certificates', json = body, headers=headers, name= 'Certificado - Criar')
         
     @task
     def load_certificates(self):
         headers = self.get_headers()
-        response = self.client.get('certificates', name = 'Certificado - Carregar')
+        response = self.client.get('certificates', headers=headers, name = 'Certificado - Carregar')
     
     @task
     def edit_certificate(self):
@@ -527,6 +532,171 @@ class SchoolUser(HttpUser):
                         "code": "1234##"
                     }
         }
+        headers["Content-Type"] = "application/json"
         headers = self.get_headers()
-        response = self.client.put('certificates/362', json = body, name= 'Certificado - Editar')  
+        response = self.client.put('certificates/362', json = body, headers=headers, name= 'Certificado - Editar')  
+        
+    @task 
+    def create_course(self):
+        body = {
+            "data": 
+                    {
+                        "name": "Aprendendo Strapi",
+                        "description": "Aprendendo a utilizar a ferramenta",
+                        "validate": "2024-10-16",
+                        "banner": None,
+                        "status": "Em análise",
+                        "registerDate": "2023-10-16",
+                        "active": False,
+                        "workload": None,
+                        "modules": None,
+                        "questions": None,
+                        "activities": None,
+                        "tags": None,
+                        "category": "1",
+                        "userCompany": "147",
+                        "private": True 
+                    }
+        }
+        headers["Content-Type"] = "application/json"
+        headers = self.get_headers()
+        response = self.client.post('courses', json = body, headers=headers, name= 'Cursos - Criar') 
+    
+    @task
+    def get_company_courses(self):
+        headers = self.get_headers()
+        response = self.get('getCoursesCompany?name=&status=&page=1&perPage=7', headers=headers, name = 'Cursos - Carregar')
+        
+    @task
+    def get_company_pending(self):
+        headers = self.get_headers()
+        response = self.get('getCoursesCompanyPendenting?page=1&perPage=15', headers=headers, name = 'Cursos - Em analise')
+        
+    @task
+    def get_company_published(self):
+        headers = self.get_headers()
+        response = self.get('courses?filters[$and][1][userCompany]=410&filters[$and][2][status]=Publicado', headers=headers, name = 'Cursos - Publicado')
+        
+    @task
+    def list_student_course(self):
+        headers = self.get_headers()
+        response = self.get('courses?populate=*', headers=headers, name = 'Cursos - Listar Alunos')
+        
+    @task
+    def list_student_pack(self):
+        headers = self.get_headers()
+        response = self.get('courses?filters[$and][1][userCompany]=147&filters[$and][2][status][$ne]=Em análise', headers=headers, name = 'Cursos - Pacote')
+        
+    @task
+    def list_exam_course(self):
+        headers = self.get_headers()
+        response = self.get('modules?filters[course]=20626&populate=*', headers=headers, name = 'Cursos - Listar Provas')
+    
+    @task
+    def list_exam_course(self):
+        headers = self.get_headers()
+        response = self.get('getNewStudentsCourse?courseId=20626&page=2&perPage=7', headers=headers, name = 'Cursos - Listar Alunos não Vinculados') 
+    
+    @task
+    def add_student_course(self):
+        body = {
+            "studentId": 463
+        }
+        headers["Content-Type"] = "application/json"
+        headers = self.get_headers()
+        response = self.put('addStudentCourse?courseId=20626', headers=headers, json=body, name = 'Curso - Adicionar aluno') 
+        
+    @task
+    def duplicate_course(self):
+        headers = self.get_headers()
+        response = self.put('doubleCourse/20626', headers=headers, name = 'Curso - Duplicar') 
+        
+    @task
+    def list_course_ratings(self):
+        headers = self.get_headers()
+        response = self.get('course-evaluations?filter[course]=2&populate=*', headers=headers, name = 'Avaliação dos Cursos - Listar') 
+        
+    @task
+    def list_course_rating(self):
+        headers = self.get_headers()
+        response = self.get('getCourseEvaluation?courseId=554', headers=headers, name = 'Avaliação - Nota do Curso') 
+        
+    @task
+    def list_course_students(self):
+        headers = self.get_headers()
+        response = self.get('getStudentsCourse?courseId=20626&name=&status=&page=1&perPage=10', headers=headers, name = 'Alunos do Curso') 
+        
+    @task
+    def create_category(self):
+        body = {
+            "data": 
+                {
+                        "name": "Node",
+                        "active": True
+                }
+        }
+        headers["Content-Type"] = "application/json"
+        headers = self.get_headers()
+        response = self.post('createCategory', headers=headers, json=body, name = 'Categoria - Criar') 
+        
+    @task
+    def list_categories(self):
+        headers = self.get_headers()
+        response = self.get('categories?filters[userCompany]=7', headers=headers, name = 'Categorias - Listar') 
+        
+    @task
+    def create_diff_plan(self):
+        body = {
+            "data": 
+                    {
+                        "description": "Acesso livre ao curso após a compra",
+                        "plans": ["335"],
+                        "publishedAt": "2023-12-06T13:59:51.147Z"
+                    }
+        }
+        headers["Content-Type"] = "application/json"
+        headers = self.get_headers()
+        response = self.post('plan-differentials', headers=headers, json=body, name = 'Plano Differenciais - Criar')
+        
+    @task
+    def create_plan(self):
+        body = {
+            "data": 
+                    {
+                        "name": "Gold",
+                        "value": 1200,
+                        "description": "Curso preparatprio gold completo com todas as informações mais adequadas para elevar seu conhecimento.",
+                        "title": "Gold",
+                        "promotion": None,
+                        "externalId": None,
+                        "active": True,
+                        "registerDate": None,
+                        "renovationAutomatic": None,
+                        "discount": None,
+                        "parcel": 1,
+                        "trialPeriod": 1,
+                        "userCompany": "129",
+                        "type_signature": "2",
+                        "courses": ["6"],
+                        "plan_differentials": ["1", "2", "3", "4"]
+                    }
+        }
+        headers["Content-Type"] = "application/json"
+        headers = self.get_headers()
+        response = self.post('plans', headers=headers, json=body, name = 'Plano - Criar') 
+        
+    @task
+    def load_plans(self):
+        headers = self.get_headers()
+        response = self.get('getCompanyPlans', headers=headers, name = 'Plano - Carregar')
+        
+    @task
+    def list_published_courses(self):
+        headers = self.get_headers()
+        response = self.get('coursesCompanyId', headers=headers, name = 'Cursos - Publicados Listar')
+        
+    @task
+    def list_company_plans(self):
+        headers = self.get_headers()
+        response = self.get('plansCompanyId', headers=headers, name = 'Planos - Criados Listar')
         
