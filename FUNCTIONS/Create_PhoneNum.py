@@ -1,6 +1,8 @@
-import random 
+from faker import Faker
+
+fake = Faker('pt_BR')
 
 def create_phone():
-    rand_num = random.randint(11111111111,99999999999)
+    phone = fake.date_of_birth()
     
-    return rand_num
+    return phone

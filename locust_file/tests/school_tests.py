@@ -2,9 +2,7 @@ from locust import HttpUser, task, between
 import sys
 import os
 
-# Adicione o caminho correto ao sys.path
 path_to_add = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-print(f"Adding path: {path_to_add}")
 sys.path.append(path_to_add)
 
 from FUNCTIONS.Create_Name import create_random_name
@@ -14,32 +12,38 @@ class SchoolUser(HttpUser):
     wait_time = between(1, 5)
     host = 'https://moviecreator.mestresdaweb.io/api/'
     
-    # Variável para armazenar o token globalmente
     token = None
     
     def on_start(self):
-        # Verifica se o token já foi obtido; caso contrário, faz login e armazena o token
-        if not SchoolUser.token:
-            SchoolUser.token = self.login()
-    
+         print(u'\033[0;32mStarting test!\033[0m')
+         if not SchoolUser.token:
+             SchoolUser.token = self.login()
+             
+    def on_stop(self):
+        print(u'\033[0;32mTeste stoped!\033[0m')
+        
     def login(self):
+        body = {
+            "identifier": "master@moviecreator.com",
+            "password": "12345678"
+        }
         try:
-            response = self.client.post("auth/local", 
-                                        json={"identifier": "abc3@gmail.com", "password": "12345678"})
+            response = self.client.post('auth/local', json=body, name = 'Login' )
+
             if response.status_code == 200:
                 response_json = response.json()
-                print(f"LOGIN: {response_json}")
-                token = response_json.get('jwt') or response_json.get('refreshToken')
+                print("\033[1;33mLOGIN", response_json, "\033[0m")
+                token = response_json.get('jwt') or response_json('refreshToken')
                 if token:
                     return token
                 else:
-                    raise Exception("Token JWT não encontrado na resposta.")
+                    raise Exception(u"\033[0;31mToken não encontrado!!!\033[0m")
             else:
-                print(f"Falha ao fazer login: {response.status_code}")
-                print(f"Erro: {response.text}")
-                raise Exception("Falha ao obter token JWT")
+                print("Falha ao fazer login!\n", response.status_code)
+                print(response.text)
+                raise Exception(u"\033[0;31mFalha ao obter o token!\033[0m")
         except Exception as e:
-            print(f"Erro durante a solicitação: {e}")
+            print(u'\033[0;31mErro durante a "GET"\033[0m', e)
             raise
 
     def get_headers(self):

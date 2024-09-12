@@ -1,13 +1,13 @@
-import string
-import random
+from faker import Faker
+
+fake = Faker('pt_BR')
 
 def create_random_name():
-    rand = random.randint(1, 10)
-
-    letters = ''.join(random.choice(string.ascii_letters) for _ in range(rand))
-
-    num = random.randint(0,999)
-    
-    name = f"{letters}{num}".lower()
+    name = fake.name().split(' ')[1]
     
     return name
+
+def create_random_email():
+    email = fake.email()
+    
+    return email
