@@ -1,7 +1,7 @@
 import json
 
 # Load the Postman collection JSON
-with open('Professor - Coordenador.postman_collection.json') as f:
+with open('Master.postman_collection.json') as f:
     data = json.load(f)
 
 # Function to replace JSON values (true/false/null) with Python equivalents (True/False/None)
