@@ -1,1 +1,1 @@
-npm install cypress --save-dev
+read json file then format it

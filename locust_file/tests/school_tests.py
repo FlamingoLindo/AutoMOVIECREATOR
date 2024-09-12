@@ -20,11 +20,11 @@ class SchoolUser(HttpUser):
              SchoolUser.token = self.login()
              
     def on_stop(self):
-        print(u'\033[0;32mTeste stoped!\033[0m')
+        print(u'\033[0;32mTest stoped!\033[0m')
         
     def login(self):
         body = {
-            "identifier": "master@moviecreator.com",
+            "identifier": "abc3@gmail.com",
             "password": "12345678"
         }
         try:
