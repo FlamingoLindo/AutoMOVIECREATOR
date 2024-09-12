@@ -7,6 +7,12 @@ func_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..','..'))
 sys.path.append(func_path)
 
 from FUNCTIONS.Create_Name import create_random_name, create_random_email
+from FUNCTIONS.Create_Adress import create_address
+from FUNCTIONS.Create_Card import create_card
+from FUNCTIONS.Create_CNPJ import gera_cnpj
+from FUNCTIONS.Create_CPF import gera_e_valida_cpf
+from FUNCTIONS.Create_PhoneNum import create_phone
+
 
 class MasterUser(HttpUser):
     wait_time = between(1,5)

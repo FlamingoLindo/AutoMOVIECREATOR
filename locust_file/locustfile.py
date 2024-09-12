@@ -10,5 +10,7 @@
 
 #from tests.school_tests import SchoolUser
 
-from tests.master_tests import MasterUser
+#from tests.master_tests import MasterUser
+
+
 
