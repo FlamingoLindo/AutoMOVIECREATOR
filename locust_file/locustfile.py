@@ -12,5 +12,8 @@
 
 #from tests.master_tests import MasterUser
 
+from tests.professor_tests import ProfessorUser
+
+
 
 
