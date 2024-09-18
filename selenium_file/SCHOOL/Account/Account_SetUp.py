@@ -132,7 +132,7 @@ def buy_plan(wait):
     go_to_plans_btn = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
     
 def set_up_acount(email, password):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)  
     driver.get(os.getenv('SCHOOL_URL'))

@@ -74,7 +74,7 @@ def new_support(wait, driver, sup_ammount):
         input_text = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/form/div[1]/label/textarea'))).send_keys(f'Auto Support {i}')
         
         file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
-        file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\movie.png')
+        file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\selenium_file\movie.png')
         
         send_sup_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/form/button'))).click()
         
@@ -85,7 +85,7 @@ def new_support(wait, driver, sup_ammount):
     
 
 def send_request(email, password, sup_ammount):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)  
     driver.get(os.getenv('STUDENT_URL'))

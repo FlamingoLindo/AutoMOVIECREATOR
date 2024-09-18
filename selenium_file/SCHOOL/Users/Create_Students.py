@@ -16,6 +16,7 @@ import time
 from dotenv import load_dotenv
 import os
 import multiprocessing
+import random
 
 load_dotenv()
 
@@ -73,7 +74,7 @@ def make_student(wait, stu_amount):
         print(u'\033[1;32mUSER CREATED!')
         
 def create_student(email, password, stu_amount):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)  
     driver.get(os.getenv('SCHOOL_URL'))

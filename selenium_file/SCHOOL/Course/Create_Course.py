@@ -18,6 +18,7 @@ import os
 import multiprocessing
 import string
 import pyautogui
+import random
 
 load_dotenv()
 
@@ -59,7 +60,7 @@ def make_course(wait, driver, course_amount):
         time.sleep(1)
 
         file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
-        file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\movie.png')
+        file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\selenium_file\movie.png')
 
         name_input = wait.until(EC.element_to_be_clickable((By.NAME, 'name'))).send_keys(
             'Auto course ', random.randint(1, 999999999))
@@ -175,7 +176,7 @@ def make_course(wait, driver, course_amount):
 
         file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
         file_input.send_keys(
-            r'C:\Users\josef\Desktop\AutoMOVIECREATOR\movie.png')
+            r'C:\Users\josef\Desktop\AutoMOVIECREATOR\selenium_file\movie.png')
 
         finish_class = wait.until(EC.element_to_be_clickable(
             (By.XPATH, '//*[@id="__next"]/main/div[2]/header/button'))).click()
@@ -199,7 +200,7 @@ def make_course(wait, driver, course_amount):
 
         file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
         file_input.send_keys(
-            r"C:\Users\josef\Desktop\AutoMOVIECREATOR\Lego yoda death sound.mp3")
+            r"C:\Users\josef\Desktop\AutoMOVIECREATOR\selenium_file\Lego yoda death sound.mp3")
 
         points = wait.until(EC.element_to_be_clickable(
             (By.XPATH, '//*[@id="__next"]/main/div[2]/div/div[2]/section/footer/label/input')))
@@ -228,7 +229,7 @@ def make_course(wait, driver, course_amount):
 
         file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
         file_input.send_keys(
-            r"C:\Users\josef\Desktop\AutoMOVIECREATOR\movie.png")
+            r"C:\Users\josef\Desktop\AutoMOVIECREATOR\selenium_file\movie.png")
 
         points = wait.until(EC.element_to_be_clickable(
             (By.XPATH, '//*[@id="__next"]/main/div[2]/div/div[2]/section/footer/label/input')))
@@ -511,7 +512,7 @@ def make_course(wait, driver, course_amount):
         pay_count += 13
         
 def create_course(email, password, course_amount):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)
     driver.get(os.getenv('SCHOOL_URL'))

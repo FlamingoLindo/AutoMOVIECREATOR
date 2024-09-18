@@ -17,6 +17,7 @@ from dotenv import load_dotenv
 import os
 import multiprocessing
 import string
+import random
 import pyautogui
 
 load_dotenv()
@@ -57,7 +58,7 @@ def new_pack(wait, driver, pack_amount):
         time.sleep(1)
         
         file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
-        file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\movie.png')
+        file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\selenium_file\movie.png')
         
         name_input = wait.until(EC.element_to_be_clickable(
             (By.NAME, 'name'))).send_keys(f'Pack {i}')
@@ -92,7 +93,7 @@ def new_pack(wait, driver, pack_amount):
         count += 2
 
 def create_course_pack(email, password, pack_amount):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)
     driver.get(os.getenv('SCHOOL_URL'))

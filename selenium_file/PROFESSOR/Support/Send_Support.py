@@ -61,7 +61,7 @@ def send_request(wait, driver, support_amount):
         message_input = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="textarea"]'))).send_keys(f'Support {i}')
         
         file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
-        file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\movie.png')
+        file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\selenium_file\movie.png')
         
         send_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/form/button'))).click()
         
@@ -74,7 +74,7 @@ def send_request(wait, driver, support_amount):
         time.sleep(0.5)
 
 def suport(email, password, support_amount):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)  
     driver.get(os.getenv('PROFESSOR_URL'))

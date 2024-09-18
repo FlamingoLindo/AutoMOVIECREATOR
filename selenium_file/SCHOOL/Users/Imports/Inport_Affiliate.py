@@ -41,13 +41,13 @@ def affiliate_page(wait):
     
 def import_affilaite(wait, driver):
     file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
-    file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\SCHOOL\Users\Imports\imports.xlsm')
+    file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\selenium_file\SCHOOL\Users\Imports\imports.xlsm')
     
     time.sleep(5000)
     
         
 def import_(email, password):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)  
     driver.get(os.getenv('SCHOOL_URL'))

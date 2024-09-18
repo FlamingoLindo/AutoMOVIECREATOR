@@ -17,6 +17,7 @@ from dotenv import load_dotenv
 import os
 import multiprocessing
 import string
+import random
 import pyautogui
 
 load_dotenv()
@@ -52,7 +53,7 @@ def create_course(wait, driver, course_amount):
         add_course_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/section/article[1]/a'))).click()
         
         file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
-        file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\movie.png')
+        file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\selenium_file\movie.png')
         
         name_input = wait.until(EC.element_to_be_clickable((By.NAME, 'name'))).send_keys(f'Auto professor course {i}')
         
@@ -129,7 +130,7 @@ def create_course(wait, driver, course_amount):
         image_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/div/div[3]/div[2]/button[3]/div'))).click()
         
         file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
-        file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\movie.png')
+        file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\selenium_file\movie.png')
         
         points = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/div/div[2]/section/footer/label/input')))
         points.clear()
@@ -149,7 +150,7 @@ def create_course(wait, driver, course_amount):
         audio_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/div/div[3]/div[2]/button[4]/div'))).click()
         
         file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
-        file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\Lego yoda death sound.mp3')
+        file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\selenium_file\Lego yoda death sound.mp3')
         
         points = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/div/div[2]/section/footer/label/input')))
         points.clear()
@@ -169,7 +170,7 @@ def create_course(wait, driver, course_amount):
         file_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/div/div[3]/div[2]/button[5]/div'))).click()
         
         file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
-        file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\movie.png')
+        file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\selenium_file\movie.png')
         
         points = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div/div/div[2]/section/footer/label/input')))
         points.clear()
@@ -308,7 +309,7 @@ def create_course(wait, driver, course_amount):
         
         
 def course(email, password, course_amount):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)
     driver.get(os.getenv('PROFESSOR_URL'))

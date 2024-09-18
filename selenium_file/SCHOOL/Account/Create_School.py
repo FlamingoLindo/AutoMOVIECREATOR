@@ -15,6 +15,7 @@ from selenium.webdriver.common.by import By
 import time
 from dotenv import load_dotenv
 import os
+import random
 import multiprocessing
 
 load_dotenv()
@@ -69,7 +70,7 @@ def create_account_internal():
     driver.quit()
     
 def create_account_external():
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)  
     driver.get(os.getenv('SCHOOL_URL'))

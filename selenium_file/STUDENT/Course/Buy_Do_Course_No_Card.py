@@ -246,7 +246,7 @@ def do_test(wait):
     test_page_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/div[3]/div[1]/div/a[1]/button'))).click()
     
 def course(email, password):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)  
     driver.get(os.getenv('STUDENT_URL'))

@@ -67,7 +67,7 @@ def correct_activitie(wait):
         print('No more activites to correct!')
     
 def activitie(email, password):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)
     driver.get(os.getenv('PROFESSOR_URL'))

@@ -62,7 +62,7 @@ def delete_all_packs(wait):
         print('All packs have been deleted!')
         
 def delete(email, password):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)
     driver.get(os.getenv('SCHOOL_URL'))

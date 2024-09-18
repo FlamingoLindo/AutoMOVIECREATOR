@@ -16,6 +16,7 @@ from selenium.webdriver.common.by import By
 import time
 from dotenv import load_dotenv
 import os
+import random
 import multiprocessing
 
 load_dotenv()
@@ -36,7 +37,7 @@ def form(wait, driver, form_amount):
         phone_input.submit()
     
 def send_form(form_amount):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)  
     driver.get(os.getenv('LANDING_URL'))

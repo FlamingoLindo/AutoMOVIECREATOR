@@ -15,6 +15,7 @@ from selenium.webdriver.common.by import By
 import time
 from dotenv import load_dotenv
 import os
+import random
 import multiprocessing
 
 load_dotenv()
@@ -73,7 +74,7 @@ def make_aff(wait, aff_amount):
         print(u'\033[1;32mUSER CREATED!')
         
 def create_aff(email, password, aff_amount):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)  
     driver.get(os.getenv('SCHOOL_URL'))

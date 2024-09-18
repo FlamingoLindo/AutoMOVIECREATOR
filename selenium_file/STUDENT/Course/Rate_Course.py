@@ -88,7 +88,7 @@ def rate_course(wait):
         print('All courses have been rated!')
 
 def rate(email, password):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)  
     driver.get(os.getenv('STUDENT_URL'))

@@ -16,6 +16,7 @@ import time
 from dotenv import load_dotenv
 import os
 import multiprocessing
+import random
 
 load_dotenv()
 
@@ -69,7 +70,7 @@ def make_professor(wait, prof_amount):
         close_modal = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/button'))).click()
         
 def create_professor(email, password, prof_amount):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)  
     driver.get(os.getenv('SCHOOL_URL'))

@@ -76,7 +76,7 @@ def set_up_account(wait, driver):
     time.sleep(1)
     
     file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
-    file_input.send_keys(r'V:\..DevApp\AutoMOVIECREATOR\movie.png')
+    file_input.send_keys(r'V:\..DevApp\AutoMOVIECREATOR\selenium_file\movie.png')
     
     """adresses_page = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="__next"]/main/div[2]/nav/a[4]'))).click()
     
@@ -148,7 +148,7 @@ def set_up_account(wait, driver):
     time.sleep(6)
 
 def config_profile(email, password):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)  
     driver.get(os.getenv('STUDENT_URL'))

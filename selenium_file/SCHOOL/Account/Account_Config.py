@@ -15,6 +15,7 @@ from selenium.webdriver.common.by import By
 import time
 from dotenv import load_dotenv
 import os
+import random
 import multiprocessing
 
 load_dotenv()
@@ -146,7 +147,7 @@ def internal(wait, driver):
     midia_name = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/form/div[1]/div[1]/label/div/input'))).send_keys('Auto Midia ', random.randint(1,999999))
 
     file_input = driver.find_element(By.CSS_SELECTOR, "input[type='file']")
-    file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\movie.png')
+    file_input.send_keys(r'C:\Users\josef\Desktop\AutoMOVIECREATOR\selenium_file\movie.png')
     
     add_file = wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="modal-root"]/div[2]/div/div/form/div[2]/button[2]'))).click()
     
@@ -383,7 +384,7 @@ def gamefication(wait, driver):
     
     
 def config_profile(email, password):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)  
     driver.get(os.getenv('SCHOOL_URL'))

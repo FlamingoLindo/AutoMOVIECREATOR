@@ -67,7 +67,7 @@ def delete_course(wait, driver):
     
     
 def create_course(email, password):
-    driver_path = './chromedriver.exe'
+    driver_path = 'selenium_file\chromedriver.exe'
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)
     driver.get(os.getenv('SCHOOL_URL'))
