@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1 (Python 3.12.3 on win32)" generated="2024-10-21T16:47:47.005890" rpa="false" schemaversion="5">
+<suite id="s1" name="Create Course" source="C:\Users\josef\Desktop\AutoMOVIECREATOR\robot_file\tests\School\create_course.robot">
+<test id="s1-t1" name="Create Course" line="6">
+<kw name="Open Browser To Login Page" owner="keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:47:47.536568" level="INFO">Opening browser 'FireFox' to base url 'https://movie-creator-empresa.netlify.app/'.</msg>
+<arg>${login_url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-10-21T16:47:47.536568" elapsed="8.525888"/>
+</kw>
+<status status="PASS" start="2024-10-21T16:47:47.535561" elapsed="8.526895"/>
+</kw>
+<kw name="Type In Email" owner="keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:47:56.067022" level="INFO">Typing text 'abc3@gmail.com' into text field 'xpath=//*[@id="__next"]/main/div/main/form/div[2]/div[1]/label/input'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div/main/form/div[2]/div[1]/label/input</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:47:56.067022" elapsed="0.225375"/>
+</kw>
+<arg>${email}</arg>
+<status status="PASS" start="2024-10-21T16:47:56.062456" elapsed="0.229941"/>
+</kw>
+<kw name="Type In Password" owner="keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:47:56.293869" level="INFO">Typing text '12345678' into text field 'xpath=//*[@id="__next"]/main/div/main/form/div[2]/div[2]/label/input'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div/main/form/div[2]/div[2]/label/input</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:47:56.293869" elapsed="0.115618"/>
+</kw>
+<arg>${password}</arg>
+<status status="PASS" start="2024-10-21T16:47:56.292397" elapsed="0.117090"/>
+</kw>
+<kw name="Click Login Button" owner="keywords">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:47:56.409487" level="INFO">Clicking element 'xpath=//*[@id="__next"]/main/div/main/form/div[2]/button'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div/main/form/div[2]/button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:47:56.409487" elapsed="0.248552"/>
+</kw>
+<status status="PASS" start="2024-10-21T16:47:56.409487" elapsed="0.250058"/>
+</kw>
+<kw name="Dashboard Should Be Visible" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="__next"]/main/div[2]/div[3]/div[1]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-10-21T16:47:56.659545" elapsed="1.452402"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:47:58.124563" level="INFO">Element 'xpath=//*[@id="__next"]/main/div[2]/div[3]/div[1]' is displayed.</msg>
+<arg>xpath=//*[@id="__next"]/main/div[2]/div[3]/div[1]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2024-10-21T16:47:58.111947" elapsed="0.012616"/>
+</kw>
+<status status="PASS" start="2024-10-21T16:47:56.659545" elapsed="1.465018"/>
+</kw>
+<kw name="Open Courses Page" owner="keywords">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:47:58.127095" level="INFO">Clicking element 'xpath=/html/body/div[1]/main/div[1]/div[2]/ul/li[2]/a'.</msg>
+<arg>xpath=/html/body/div[1]/main/div[1]/div[2]/ul/li[2]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:47:58.125992" elapsed="0.235741"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="__next"]/main/div[2]/div[2]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-10-21T16:47:58.361733" elapsed="0.013508"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="__next"]/main/div[2]/div[3]/section/div[2]/div/a</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-10-21T16:47:58.375241" elapsed="1.442208"/>
+</kw>
+<status status="PASS" start="2024-10-21T16:47:58.125992" elapsed="1.691457"/>
+</kw>
+<kw name="Add New Course" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="__next"]/main/div[2]/div[3]/section/div[2]/div/a</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-10-21T16:47:59.818449" elapsed="0.012811"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:47:59.831260" level="INFO">Clicking element 'xpath=//*[@id="__next"]/main/div[2]/div[3]/section/div[2]/div/a'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div[2]/div[3]/section/div[2]/div/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:47:59.831260" elapsed="0.219426"/>
+</kw>
+<status status="PASS" start="2024-10-21T16:47:59.817449" elapsed="0.233237"/>
+</kw>
+<kw name="Fill General Info" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="mainForm"]/div/h2</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-10-21T16:48:00.051686" elapsed="0.639388"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:00.691074" level="INFO">Typing text 'Course made using robotframework' into text field 'xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/div/form[1]/div/label/div/input'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/div/form[1]/div/label/div/input</arg>
+<arg>Course made using robotframework</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:00.691074" elapsed="0.095124"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:00.786198" level="INFO">Typing text 'Description' into text field 'xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/div/form[1]/label/div/label/textarea'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/div/form[1]/label/div/label/textarea</arg>
+<arg>Description</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:00.786198" elapsed="0.028849"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:00.816066" level="INFO">Typing text 'robot' into text field 'xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/div/form[2]/div/label/div/input'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/div/form[2]/div/label/div/input</arg>
+<arg>robot</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:00.815047" elapsed="0.136726"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:00.952958" level="INFO">Clicking button 'xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/div/form[2]/div/label/div/div/button'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/div/form[2]/div/label/div/div/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:00.952958" elapsed="0.226542"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="mainForm"]/div/div/div/label/div/input</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:01.179500" elapsed="0.036973"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:01.216473" level="INFO">Typing text '10' into text field 'xpath=//*[@id="mainForm"]/div/div/div/label/div/input'.</msg>
+<arg>xpath=//*[@id="mainForm"]/div/div/div/label/div/input</arg>
+<arg>10</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:01.216473" elapsed="0.016007"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:01.233792" level="INFO">Clicking element 'xpath=//*[@id="mainForm"]/div/label[2]/div/div'.</msg>
+<arg>xpath=//*[@id="mainForm"]/div/label[2]/div/div</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:01.232480" elapsed="0.240291"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:01.473756" level="INFO">Clicking element 'xpath=//*[@id="react-select-2-option-0"]'.</msg>
+<arg>xpath=//*[@id="react-select-2-option-0"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:01.472771" elapsed="0.230251"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:01.704032" level="INFO">Sending C:\Users\josef\Desktop\AutoMOVIECREATOR\selenium_file\movie.png to browser.</msg>
+<arg>xpath=//*[@id="mainForm"]/div/label[1]/input</arg>
+<arg>C:\\Users\\josef\\Desktop\\AutoMOVIECREATOR\\selenium_file\\movie.png</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:01.703022" elapsed="0.023988"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:01.727010" level="INFO">Clicking button 'xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/div/form[3]/button'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/div/form[3]/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:01.727010" elapsed="0.235637"/>
+</kw>
+<status status="PASS" start="2024-10-21T16:48:00.051686" elapsed="1.910961"/>
+</kw>
+<kw name="Add Module" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/div/h2</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-10-21T16:48:01.963647" elapsed="0.012629"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:01.976276" level="INFO">Typing text 'Module 1' into text field 'xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/div/form[1]/div/label/div/input'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/div/form[1]/div/label/div/input</arg>
+<arg>Module 1</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:01.976276" elapsed="0.049541"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:02.025817" level="INFO">Clicking button 'xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/div/form[1]/button'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/div/form[1]/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:02.025817" elapsed="0.229252"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:02.255069" level="INFO">Clicking element 'xpath=//*[@id="react-select-3-placeholder"]'.</msg>
+<arg>xpath=//*[@id="react-select-3-placeholder"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:02.255069" elapsed="0.264792"/>
+</kw>
+<kw name="Element Should Be Enabled" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/div/form[2]/label[1]/div/div</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="PASS" start="2024-10-21T16:48:02.519861" elapsed="0.012643"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:02.533510" level="INFO">Clicking element 'xpath=//*[@id="react-select-3-option-0"]'.</msg>
+<arg>xpath=//*[@id="react-select-3-option-0"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:02.533510" elapsed="0.237881"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:02.772401" level="INFO">Clicking button 'xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/form/button'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div[2]/div[2]/div[2]/form/button</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:02.772401" elapsed="0.236129"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="__next"]/main/header/button</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-10-21T16:48:03.008530" elapsed="0.013267"/>
+</kw>
+<status status="PASS" start="2024-10-21T16:48:01.963647" elapsed="1.058150"/>
+</kw>
+<kw name="Add Video Class" owner="keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="__next"]/main/header/button</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-10-21T16:48:03.022801" elapsed="0.012286"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:03.036568" level="INFO">Clicking element 'xpath=//*[@id="__next"]/main/div[2]/a'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div[2]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:03.036568" elapsed="0.235064"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="__next"]/main/div[2]/header/div[2]/strong</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-10-21T16:48:03.271632" elapsed="0.420155"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:03.692302" level="INFO">Typing text 'Robot Video Class' into text field 'xpath=//*[@id="__next"]/main/div[2]/div/div[1]/div[2]/label/div/input'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div[2]/div/div[1]/div[2]/label/div/input</arg>
+<arg>Robot Video Class</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:03.691787" elapsed="0.031835"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:03.723622" level="INFO">Typing text 'Robot Video Description' into text field 'xpath=//*[@id="__next"]/main/div[2]/div/div[1]/div[3]/label/div/label/textarea'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div[2]/div/div[1]/div[3]/label/div/label/textarea</arg>
+<arg>Robot Video Description</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:03.723622" elapsed="0.033871"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:03.757493" level="INFO">Clicking element 'xpath=//*[@id="__next"]/main/div[2]/div/div[3]/div[2]/button[1]'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div[2]/div/div[3]/div[2]/button[1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:03.757493" elapsed="0.224049"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:03.982067" level="INFO">Typing text 'https://www.youtube.com/watch?v=DjhpZhWmPZ8&amp;ab_channel=MemeCollege' into text field 'xpath=//*[@id="__next"]/main/div[2]/div/div[2]/section/div/div/div/div[2]/input'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div[2]/div/div[2]/section/div/div/div/div[2]/input</arg>
+<arg>https://www.youtube.com/watch?v=DjhpZhWmPZ8&amp;ab_channel=MemeCollege</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:03.982067" elapsed="0.256004"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:04.238071" level="INFO">Clicking element 'xpath=//*[@id="__next"]/main/div[2]/div/div[2]/section/div/div/div/div[2]/div/button[2]'.</msg>
+<arg>xpath=//*[@id="__next"]/main/div[2]/div/div[2]/section/div/div/div/div[2]/div/button[2]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-10-21T16:48:04.238071" elapsed="0.229759"/>
+</kw>
+<kw name="Scroll Element Into View" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="__next"]/main/div[2]/header/button</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" start="2024-10-21T16:48:04.467830" elapsed="0.299955"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="__next"]/main/div[2]/header/button</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-10-21T16:48:04.767785" elapsed="0.013039"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-10-21T16:48:04.780824" level="INFO">Clicking element 'xpath=//*[@id="__next"]/main/div[2]/header/button'.</msg>
+<msg time="2024-10-21T16:48:04.858073" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-10-21T16:48:04.859585" level="FAIL">ElementClickInterceptedException: Message: Element &lt;button class="sc-6ed5f89f-2 eMqMgZ"&gt; is not clickable at point (1077,30) because another element &lt;div class="sc-ae760ff-4 iqYETO"&gt; obscures it
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:193:5
+ElementClickInterceptedError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:337:5
+webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:177:11
+interaction.clickElement@chrome://remote/content/marionette/interaction.sys.mjs:136:11
+clickElement@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:205:29
+receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:85:31
+</msg>
+<arg>xpath=//*[@id="__next"]/main/div[2]/header/button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="FAIL" start="2024-10-21T16:48:04.780824" elapsed="0.087298">ElementClickInterceptedException: Message: Element &lt;button class="sc-6ed5f89f-2 eMqMgZ"&gt; is not clickable at point (1077,30) because another element &lt;div class="sc-ae760ff-4 iqYETO"&gt; obscures it
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:193:5
+ElementClickInterceptedError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:337:5
+webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:177:11
+interaction.clickElement@chrome://remote/content/marionette/interaction.sys.mjs:136:11
+clickElement@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:205:29
+receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:85:31
+</status>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="modal-root"]/div[2]/div/div/button</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2024-10-21T16:48:04.868122" elapsed="0.000000"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="modal-root"]/div[2]/div/div/button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-10-21T16:48:04.868122" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2024-10-21T16:48:03.022801" elapsed="1.845321">ElementClickInterceptedException: Message: Element &lt;button class="sc-6ed5f89f-2 eMqMgZ"&gt; is not clickable at point (1077,30) because another element &lt;div class="sc-ae760ff-4 iqYETO"&gt; obscures it
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:193:5
+ElementClickInterceptedError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:337:5
+webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:177:11
+interaction.clickElement@chrome://remote/content/marionette/interaction.sys.mjs:136:11
+clickElement@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:205:29
+receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:85:31
+</status>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-10-21T16:48:04.869627" elapsed="3.110154"/>
+</kw>
+<status status="FAIL" start="2024-10-21T16:47:47.534265" elapsed="20.445516">ElementClickInterceptedException: Message: Element &lt;button class="sc-6ed5f89f-2 eMqMgZ"&gt; is not clickable at point (1077,30) because another element &lt;div class="sc-ae760ff-4 iqYETO"&gt; obscures it
+Stacktrace:
+RemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:193:5
+ElementClickInterceptedError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:337:5
+webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:177:11
+interaction.clickElement@chrome://remote/content/marionette/interaction.sys.mjs:136:11
+clickElement@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:205:29
+receiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:85:31
+</status>
+</test>
+<status status="FAIL" start="2024-10-21T16:47:47.007897" elapsed="20.973249"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Create Course">Create Course</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
