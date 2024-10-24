@@ -28,5 +28,4 @@ Create Course
     Test Creation    Robot Test    15    Robot Test Chooices    Right    Wrong
     Approve course
     
-
     [Teardown]    Close Browser
