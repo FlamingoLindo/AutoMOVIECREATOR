@@ -58,9 +58,8 @@ def schools(wait, driver):
     
     
 def create_account():
-    driver_path = 'selenium_file\chromedriver.exe'
-    s = Service(driver_path)
-    driver = webdriver.Chrome(service=s)  
+    
+    driver = webdriver.Chrome()
     driver.get(os.getenv('AFF_URL'))
     wait = WebDriverWait(driver, 5)
     

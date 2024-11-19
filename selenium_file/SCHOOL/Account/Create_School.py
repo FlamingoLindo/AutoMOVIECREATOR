@@ -70,9 +70,7 @@ def create_account_internal():
     driver.quit()
     
 def create_account_external():
-    driver_path = 'selenium_file\chromedriver.exe'
-    s = Service(driver_path)
-    driver = webdriver.Chrome(service=s)  
+    driver = webdriver.Chrome()
     driver.get(os.getenv('SCHOOL_URL'))
     wait = WebDriverWait(driver, 5)
     
